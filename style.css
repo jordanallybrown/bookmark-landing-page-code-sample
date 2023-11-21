@@ -1,0 +1,453 @@
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
+
+:root {
+  /* colors - hsl values to modify alpha later on */
+  --clr-primary-blue: 231 69% 60%;
+  --clr-primary-red: 0 94% 66%;
+  --clr-neutral-gray: 229 8% 60%;
+  --clr-neutral-light-gray: 0 0% 97%;
+  --clr-neutral-dark-blue: 229 31% 21%;
+  --clr-white: 0 0% 100%;
+
+  /* font-sizes */
+  --fs-100: 0.75rem; /* 12 */
+  --fs-200: 0.875rem; /* 14 */
+  --fs-300: 1rem; /* 16 */
+  --fs-400: 1.125rem; /* 18, base */
+  --fs-500: 1.25rem; /* 20 */
+  --fs-600: 1.5rem; /* 24 */
+  --fs-700: 1.875rem; /* 30 */
+  --fs-800: 2rem; /* 32 */
+  --fs-900: 3rem; /* 48 */
+
+  /* font-family */
+  --ff-sans-serif: "Rubik", sans-serif;
+}
+
+/* -------------------- */
+/* Resets               */
+/* -------------------- */
+
+/* Box sizing - make calculating width/height of elements easier */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+/* Element styles */
+p {
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+/* Body */
+body {
+  font-family: var(--ff-sans-serif);
+  font-size: var(--fs-400);
+  font-weight: 400;
+  background-color: var(hsl(--clr-white));
+  color: hsl(var(--clr-neutral-dark-blue) / 0.5);
+  /* reset the default line-height (1.4) for readability */
+  line-height: 1.5;
+  /* prevent short pages */
+  min-height: 100vh;
+}
+
+/* Image */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Forms - use font properties that we specify */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove animations for users who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -------------------- */
+/* Utility classes       */
+/* -------------------- */
+
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.container {
+  /* prevents from touching side of the page */
+  padding-inline: 2em;
+  max-width: 80rem;
+  /* keeps content in the middle */
+  margin-inline: auto;
+
+  /* top padding */
+  padding-top: 3rem;
+}
+
+.flex-container {
+  justify-content: space-between;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+/* colors */
+.bg-white {
+  background-color: hsl(var(--clr-white));
+}
+.bg-red {
+  background-color: hsl(var(--clr-primary-red));
+}
+.bg-blue {
+  background-color: hsl(var(--clr-primary-blue));
+}
+.bg-light-gray {
+  background-color: hsl(var(--clr-neutral-light-gray));
+}
+.bg-dark-blue {
+  background-color: hsl(var(--clr-neutral-dark-blue));
+}
+.text-white {
+  color: hsl(var(--clr-white));
+}
+.text-dark-blue {
+  color: hsl(var(--clr-neutral-dark-blue));
+}
+.text-light-gray {
+  color: hsl(var(--clr-neutral-dark-blue) / 0.5);
+}
+
+.text-off-dark-blue {
+  color: hsl(var(--clr-neutral-dark-blue) / 0.75);
+}
+
+/* typography */
+
+.text-center {
+  text-align: center;
+}
+
+.ff-sans-serif {
+  font-family: var(--ff-sans-serif);
+}
+
+.letter-spacing-1 {
+  letter-spacing: 4.75px;
+}
+.letter-spacing-2 {
+  letter-spacing: 2.7px;
+}
+.letter-spacing-3 {
+  letter-spacing: 2.35px;
+}
+
+.letter-spacing-4 {
+  letter-spacing: 1.5px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.fs-900 {
+  font-size: var(--fs-900);
+}
+.fs-800 {
+  font-size: var(--fs-800);
+}
+.fs-700 {
+  font-size: var(--fs-700);
+}
+.fs-600 {
+  font-size: var(--fs-600);
+}
+.fs-500 {
+  font-size: var(--fs-500);
+}
+.fs-400 {
+  font-size: var(--fs-400);
+}
+.fs-300 {
+  font-size: var(--fs-300);
+}
+.fs-200 {
+  font-size: var(--fs-200);
+}
+.fs-100 {
+  font-size: var(--fs-100);
+}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+  line-height: 1.1;
+}
+
+/* ------------------- */
+/* Components         */
+/* ------------------- */
+.primary-navigation {
+  --gap: 2.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.primary-navigation a,
+.primary-footer a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary-navigation a:hover,
+.primary-navigation a:focus,
+.secondary-navigation a:hover,
+.secondary-navigation a:focus {
+  color: hsl(var(--clr-primary-red));
+}
+
+.primary-header {
+  padding-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.primary-header section {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-block: 5rem;
+}
+
+.features-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* text-align: center; */
+  max-width: 45rem;
+}
+
+.primary-button,
+.secondary-button,
+.tertiary-button {
+  border: none;
+  padding: 0.75em 2.125em;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0px 7px 7px -4px rgba(145, 148, 162, 0.74);
+  -webkit-box-shadow: 0px 7px 7px -4px rgba(145, 148, 162, 0.74);
+  -moz-box-shadow: 0px 7px 7px -4px rgba(145, 148, 162, 0.74);
+}
+
+.primary-button {
+  background-color: hsl(var(--clr-primary-red));
+  color: hsl(var(--clr-white));
+  border: 2px solid hsl(var(--clr-primary-red));
+}
+
+.secondary-button {
+  background-color: hsl(var(--clr-primary-blue));
+  color: hsl(var(--clr-white));
+  border: 2px solid hsl(var(--clr-primary-blue));
+}
+
+.tertiary-button {
+  background-color: hsl(var(--clr-neutral-light-gray));
+  color: hsl(var(--clr-neutral-dark-blue));
+  border: 2px solid hsl(var(--clr-neutral-light-gray));
+}
+
+.primary-button:hover,
+.primary-button:focus {
+  background-color: hsl(var(--clr-white));
+  color: hsl(var(--clr-primary-red));
+}
+
+.secondary-button:hover,
+.secondary-button:focus {
+  background-color: hsl(var(--clr-white));
+  color: hsl(var(--clr-primary-blue));
+}
+
+.tertiary-button:hover,
+.tertiary-button:focus {
+  background-color: hsl(var(--clr-white));
+  color: hsl(var(--clr-neutral-dark-blue));
+  border-color: hsl(var(--clr-neutral-dark-blue));
+}
+
+.tab-list > * {
+  cursor: pointer;
+  padding: var(--underline-gap, 1rem) 0;
+  border: 0;
+  color: hsl(var(--clr-neutral-dark-blue) / 0.5);
+}
+
+.tab-list > *:hover,
+.tab-list > *:focus {
+  color: hsl(var(--clr-primary-red));
+}
+
+.tab-button .active {
+  color: hsl(var(--clr-neutral-dark-blue));
+}
+
+.tab-list {
+  --gap: 2rem;
+  justify-content: space-between;
+  border-bottom: 0.1rem solid hsl(var(--clr-neutral-dark-blue) / 0.25);
+}
+
+.tab-content {
+  display: none;
+  -webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;
+  --gap: 3rem;
+}
+
+.default {
+  display: flex;
+}
+
+.tab-content-details {
+  flex-direction: column;
+  --gap: 2rem;
+}
+.tab-content-details button {
+  align-self: start;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.primary-footer {
+  padding: 2rem;
+  background-color: hsl(var(--clr-neutral-dark-blue));
+  justify-content: space-around;
+}
+
+.secondary-navigation {
+  --gap: 2rem;
+}
+
+.social-media {
+  --gap: 2rem;
+}
+
+.social-media img {
+  cursor: pointer;
+}
+
+@media (max-width: 45rem) {
+  .primary-header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .button-container {
+    justify-content: space-around;
+  }
+
+  .tab-list,
+  .tab-content {
+    flex-direction: column;
+  }
+
+  .tab-content {
+    text-align: center;
+  }
+  .tab-content-details button {
+    align-self: center;
+  }
+
+  .primary-footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    --gap: 2rem;
+  }
+  .secondary-navigation {
+    flex-direction: column;
+    align-items: center;
+  }
+}
