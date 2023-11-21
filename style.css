@@ -352,8 +352,8 @@ select {
   color: hsl(var(--clr-primary-red));
 }
 
-.tab-button .active {
-  color: hsl(var(--clr-neutral-dark-blue));
+.tab-list > .active {
+  color: hsl(var(--clr-primary-red));
 }
 
 .tab-list {
